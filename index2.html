@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella Canato Bolis | Portfólio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --secondary-dark: #112240;
+            --accent-blue: #2d7d90;
+            --accent-purple: #6e40c9;
+            --accent-pink: #ff2e8b;
+            --text-light: #e6f1ff;
+            --text-gray: #8892b0;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Efeitos de partículas no fundo */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        /* Header e Navegação com animação */
+        header {
+            background-color: rgba(10, 25, 47, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transform: translateY(0);
+            transition: transform 0.5s ease, background-color 0.5s ease;
+        }
+        
+        header.hidden {
+            transform: translateY(-100%);
+        }
+        
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.98);
+            padding: 15px 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo span {
+            color: var(--accent-blue);
+            position: relative;
+            display: inline-block;
+            animation: textGlow 3s infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 5px var(--accent-blue), 0 0 10px var(--accent-blue); }
+            50% { text-shadow: 0 0 10px var(--accent-purple), 0 0 20px var(--accent-purple); }
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            bottom: 0;
+            left: -100%;
+            transition: left 0.5s ease;
+        }
+        
+        .logo:hover::after {
+            left: 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .nav-links a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .nav-links a.active {
+            color: var(--accent-blue);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+        
+        /* Botão tema */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: transform 0.5s ease, color 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+            color: var(--accent-purple);
+        }
+        
+        /* Seção Hero com animações */
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            animation: floatImage 5s infinite alternate ease-in-out;
+            margin-left: 60px; 
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+            top: 10%;
+            right: 10%;
+            opacity: 0.3;
+            filter: blur(40px);
+            animation: float 15s infinite alternate ease-in-out;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            bottom: 10%;
+            left: 5%;
+            opacity: 0.2;
+            filter: blur(40px);
+            animation: float 20s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(10px, -10px) scale(1.02); }
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            flex: 1;
+            animation: fadeInUp 1.5s ease-out 0.2s both;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        
+        .hero-text .typed-text {
+            color: var(--accent-blue);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-text .typed-text::after {
+            content: '|';
+            position: absolute;
+            right: -10px;
+            color: var(--accent-purple);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .hero-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            color: var(--text-gray);
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            animation: floatImage 5s infinite alternate ease-in-out;
+        }
+        
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .profile-slider {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 5px solid var(--secondary-dark);
+            animation: floatImage 5s infinite alternate ease-in-out;
+        }
+
+        .profile-slider .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .profile-slider .slide.active {
+            opacity: 1;
+        }
+
+        .profile-slider .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Indicadores */
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: var(--accent-blue);
+            transform: scale(1.2);
+        }
+
+        /* Controles */
+        .slider-prev, .slider-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-prev { left: 10px; }
+        .slider-next { right: 10px; }
+
+        .profile-slider:hover .slider-prev,
+        .profile-slider:hover .slider-next {
+            opacity: 1;
+        }
+
+        .slider-prev:hover, .slider-next:hover {
+            background-color: var(--accent-blue);
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 125, 144, 0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(45, 125, 144, 0.3);
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: var(--white);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(110, 64, 201, 0.4);
+        }
+        
+        /* Seções Gerais */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::before, .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+            bottom: 0;
+            opacity: 0;
+            transform: translateX(-50%) scaleX(0);
+            transition: all 0.8s ease;
+        }
+        
+        .section-title h2::before {
+            left: 40%;
+            transform-origin: right;
+        }
+        
+        .section-title h2::after {
+            left: 60%;
+            transform-origin: left;
+        }
+        
+        .section-title.visible h2::before, .section-title.visible h2::after {
+            opacity: 1;
+            transform: translateX(-50%) scaleX(1);
+        }
+        
+        .section-title .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+        
+        /* Sobre Mim */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        
+        .about-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+        
+        .skills {
+            flex: 1;
+        }
+        
+        .skill-item {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .skill-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .skill-item:nth-child(2) { transition-delay: 0.1s; }
+        .skill-item:nth-child(3) { transition-delay: 0.2s; }
+        .skill-item:nth-child(4) { transition-delay: 0.3s; }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar {
+            height: 12px;
+            background-color: var(--secondary-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Habilidades */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background-color: var(--secondary-dark);
+            padding: 40px 30px;
+            border-radius: 15px;
+            transition: all 0.5s ease;
+            border-left: 4px solid var(--accent-blue);
+            opacity: 0;
+            transform: translateY(50px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-left-color: var(--accent-purple);
+        }
+        
+        .skill-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skill-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-blue), transparent);
+            bottom: -5px;
+            left: 0;
+        }
+        
+        .skill-card ul {
+            list-style-type: none;
+        }
+        
+        .skill-card li {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 40px; /* Mais espaço para o ícone */
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .skill-card li:hover {
+            color: var(--accent-blue);
+            transform: translateX(5px);
+        }
+        
+        .skill-card li:before {
+            content: '▸';
+            color: var(--accent-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card li:hover:before {
+            transform: rotate(90deg);
+        }
+
+        .language-icon {
+            position: absolute;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+            transition: all 0.3s ease;
+        }
+
+        .language-name {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+
+        .language-level {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            background: rgba(45, 125, 144, 0.1);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        /* Cores específicas para cada linguagem */
+        .fa-php { color: #777BB4; }
+        .fa-python { color: #3776AB; }
+        .fa-java { color: #007396; }
+        .fa-js-square { color: #F7DF1E; }
+
+        /* Efeito hover nos ícones */
+        .skill-card li:hover .language-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Efeito de brilho nos ícones */
+        .language-icon i {
+            filter: drop-shadow(0 0 5px currentColor);
+            transition: filter 0.3s ease;
+        }
+
+        .skill-card li:hover .language-icon i {
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        
+        /* Contato */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--secondary-dark);
+            padding: 40px 30px;
+            border-radius: 15px;
+            width: 280px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-item::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .contact-item:hover::after {
+            opacity: 0.05;
+        }
+        
+        .contact-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact-item:nth-child(2) { transition-delay: 0.1s; }
+        .contact-item:nth-child(3) { transition-delay: 0.2s; }
+        .contact-item:nth-child(4) { transition-delay: 0.3s; }
+        
+        .contact-item:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-item:hover .contact-icon {
+            color: var(--accent-purple);
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .contact-item h3 {
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px rgba(45, 125, 144, 0.5);
+        }
+        
+        /* Currículo */
+        .resume-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--secondary-dark);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resume-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+        }
+        
+        .resume-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .resume-section {
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .resume-section.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .resume-section:nth-child(2) { transition-delay: 0.2s; }
+        .resume-section:nth-child(3) { transition-delay: 0.4s; }
+        
+        .resume-section h3 {
+            color: var(--accent-blue);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-purple);
+            position: relative;
+        }
+        
+        .resume-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-purple), transparent);
+            bottom: -2px;
+            left: 0;
+        }
+        
+        .resume-item {
+            margin-bottom: 35px;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-blue);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        .resume-item:hover {
+            border-left-color: var(--accent-purple);
+            padding-left: 30px;
+        }
+        
+        .resume-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            left: -9px;
+            top: 5px;
+            transition: all 0.5s ease;
+        }
+        
+        .resume-item:hover::before {
+            background-color: var(--accent-purple);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--accent-purple);
+        }
+        
+        .resume-item h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        
+        .resume-item .date {
+            color: var(--accent-purple);
+            font-style: italic;
+            margin-bottom: 12px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .resume-item p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark);
+            padding: 60px 0 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            border-radius: 50%;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .social-links a i {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-10px) rotate(360deg);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .copyright {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        
+        /* Animações gerais */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Progresso da rolagem */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+        
+        /* Botão para voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-bottom: 80px;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-image {
+                margin-left: 0; /* Remove o deslocamento em telas menores */
+                order: 2; /* Garante que a imagem fique abaixo do texto */
+            }
+            
+            .profile-img-placeholder {
+                margin-left: 0; /* Remove margem em telas menores */
+                margin: 0 auto; /* Centraliza a imagem */
+            }
+        }
+        
+        @keyframes floatImage {
+            0%, 100% { 
+                transform: translateY(0) translateX(0); 
+            }
+            50% { 
+                transform: translateY(-20px) translateX(5px); /* Adiciona movimento horizontal suave */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background-color: rgba(17, 34, 64, 0.95);
+                width: 100%;
+                text-align: center;
+                transition: 0.5s;
+                padding: 30px 0;
+                backdrop-filter: blur(10px);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-img-placeholder {
+                width: 280px;
+                height: 280px;
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            
+            .resume-content {
+                padding: 30px;
+            }
+            
+            .contact-item {
+                width: 100%;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-img-placeholder {
+                width: 250px;
+                height: 250px;
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+                margin-right: 10px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progresso da rolagem -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Botão para voltar ao topo -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    
+    <!-- Header e Navegação -->
+    <header id="mainHeader">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Isabella<span>Bolis</span></a>
+                <div class="menu-toggle" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link active">Início</a></li>
+                    <li><a href="#about" class="nav-link">Sobre Mim</a></li>
+                    <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                    <li><a href="#resume" class="nav-link">Currículo</a></li>
+                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Efeito de partículas -->
+    <div id="particles-js"></div>
+
+    <!-- Seção Hero/Início -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Olá, eu sou</h2>
+                    <h1>Isabella <span class="typed-text" id="typedText">Desenvolvedora Full Stack</span></h1>
+                    <h2>Tecnóloga em Sistemas para Internet</h2>
+                    <p>Sou uma desenvolvedora apaixonada por tecnologia, com experiência em criação de sites, e-commerces, dashboards e sistemas distribuídos. Busco sempre aplicar minhas habilidades técnicas em projetos inovadores e colaborativos.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Entre em Contato</a>
+                        <a href="#resume" class="btn">Ver Currículo</a>
+                        <a href="#projects" class="btn">Projetos</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-slider">
+                        <!-- Imagem 1 (ativa por padrão) -->
+                        <div class="slide active">
+                            <img src="img1.jpeg" alt="Isabella Canato - Foto 1">
+                        </div>
+                        
+                        <!-- Imagem 2 -->
+                        <div class="slide">
+                            <img src="img2.jpeg" alt="Isabella Canato - Foto 2">
+                        </div>
+
+                        <!-- Imagem 3 -->
+                        <div class="slide">
+                            <img src="img3.jpeg" alt="Isabella Canato - Foto 3">
+                        </div>
+                        
+                        
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title" id="aboutTitle">
+                <h2>Sobre Mim</h2>
+                <p class="subtitle">Conheça minha trajetória e habilidades</p>
+            </div>
+            <div class="about-content" id="aboutContent">
+                <div class="about-text">
+                    <h3>Uma desenvolvedora em constante evolução</h3>
+                    <p>Sou uma profissional dinâmica, que gosta de trabalhar em equipe e adora aprender coisas novas. Sempre busco realizar minhas tarefas de forma organizada e eficiente, e não gosto de ficar parada - estou sempre em busca de novos desafios.</p>
+                    <p>Atualmente, atuo como desenvolvedora freelancer criando e mantendo sites, e-commerces e plataformas de venda. Também trabalho como Agente Educacional na Prefeitura de Casa Branca/SP, onde ofereço suporte a alunos, professores e comunidade escolar.</p>
+                    <p>Minha formação inclui Tecnologia em Sistemas para Internet pelo IFSP e Técnico em Análise e Desenvolvimento de Sistemas pela ETEC. Estou sempre buscando aprimorar meus conhecimentos e habilidades para entregar os melhores resultados.</p>
+                </div>
+                <div class="skills">
+                    <div class="skill-item" id="skill1">
+                        <div class="skill-name">
+                            <span>Desenvolvimento Web</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" id="skill2">
+                        <div class="skill-name">
+                            <span>PHP & Python</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" id="skill3">
+                        <div class="skill-name">
+                            <span>Power BI & Dashboards</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" id="skill4">
+                        <div class="skill-name">
+                            <span>Inglês</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="50"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title" id="skillsTitle">
+                <h2>Habilidades Técnicas</h2>
+                <p class="subtitle">Tecnologias e competências que domino</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card" id="skillCard1">
+                    <h3>Linguagens de Programação</h3>
+                    <ul>
+                        <li>
+                            <div class="language-icon">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <span class="language-name">PHP</span>
+                            <span class="language-level">Intermediário</span>
+                        </li>
+                        <li>
+                            <div class="language-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <span class="language-name">Python</span>
+                            <span class="language-level">Intermediário</span>
+                        </li>
+                        <li>
+                            <div class="language-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <span class="language-name">Java</span>
+                            <span class="language-level">Intermediário</span>
+                        </li>
+                        <li>
+                            <div class="language-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <span class="language-name">JavaScript</span>
+                            <span class="language-level">Intermediário</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-card" id="skillCard2">
+                    <h3>Ferramentas & Tecnologias</h3>
+                    <ul>
+                        <li>Power BI (Dashboards e Relatórios)</li>
+                        <li>Pacote Office (Word, Excel, PowerPoint)</li>
+                        <li>Desenvolvimento de jogos em Java</li>
+                        <li>Sistemas distribuídos e microserviços</li>
+                    </ul>
+                </div>
+                <div class="skill-card" id="skillCard3">
+                    <h3>Competências Pessoais</h3>
+                    <ul>
+                        <li>Trabalho em equipe</li>
+                        <li>Comunicação eficaz</li>
+                        <li>Organização</li>
+                        <li>Capacidade de ensino</li>
+                        <li>Adaptabilidade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Currículo -->
+    <section id="resume">
+        <div class="container">
+            <div class="section-title" id="resumeTitle">
+                <h2>Currículo</h2>
+                <p class="subtitle">Minha formação e experiência profissional</p>
+            </div>
+            <div class="resume-content" id="resumeContent">
+                <div class="resume-section" id="educationSection">
+                    <h3>Formação Acadêmica</h3>
+                    <div class="resume-item">
+                        <h4>Tecnologia em Sistemas para Internet</h4>
+                        <span class="date">IFSP – São João da Boa Vista/SP | Concluído em 12/2025</span>
+                        <p>Formação focada em desenvolvimento web, sistemas distribuídos e arquitetura de software.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Técnico em Análise e Desenvolvimento de Sistemas</h4>
+                        <span class="date">ETEC – Casa Branca/SP | Concluído em 12/2022</span>
+                        <p>Base técnica em programação, banco de dados e engenharia de software.</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section" id="experienceSection">
+                    <h3>Experiência Profissional</h3>
+                    <div class="resume-item">
+                        <h4>Desenvolvedor - Freelancer</h4>
+                        <span class="date">2023 - Presente</span>
+                        <p>Criação e manutenção de sites, e-commerces e plataformas de venda. Desenvolvimento de marketplaces e páginas institucionais, com foco em performance e integração com sistemas legados, dashboards e APIs externas.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Agente Educacional - Prefeitura de Casa Branca/SP</h4>
+                        <span class="date">2024 - Presente</span>
+                        <p>Atendimento e apoio a alunos, professores e comunidade escolar. Suporte a atividades pedagógicas externas à sala de aula.</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section" id="additionalSection">
+                    <h3>Habilidades Adicionais</h3>
+                    <div class="resume-item">
+                        <p><strong>Idiomas:</strong> Inglês - B1 (CEFR)</p>
+                        <p><strong>CNH:</strong> Categoria AB</p>
+                        <p><strong>Outros:</strong> Conhecimento em administração financeira aplicada</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://drive.google.com/file/d/1bUXayEIvh_ycdn11U1XJGoBOh2anFKof/view?usp=sharing" class="btn btn-primary" download>Baixar Currículo (PDF)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title" id="contactTitle">
+                <h2>Entre em Contato</h2>
+                <p class="subtitle">Vamos conversar sobre oportunidades</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item" id="contactEmail">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>E-mail</h3>
+                    <a href="mailto:isacanato017@gmail.com" class="contact-link">isacanato017@gmail.com</a>
+                </div>
+                
+                <div class="contact-item" id="contactLinkedin">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/isabella-canato/" target="_blank" class="contact-link">linkedin.com/in/isabella-canato</a>
+                </div>
+                
+                <div class="contact-item" id="contactGithub">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/Canato17" target="_blank" class="contact-link">github.com/Canato17</a>
+                </div>
+                
+                <div class="contact-item" id="contactPhone">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Telefone</h3>
+                    <a href="tel:19995634487" class="contact-link">(19) 99563-4487</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/isabella-canato/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Canato17" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:isacanato017@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">© 2025 Isabella Canato Bolis. Todos os direitos reservados.</p>
+            <p class="copyright">Desenvolvido com <i class="fas fa-heart" style="color: #ff2e8b;"></i> e muito código</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Configuração de partículas
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: ["#2d7d90", "#6e40c9", "#ff2e8b"] },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#2d7d90",
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" },
+                            resize: true
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        });
+        
+        // Menu responsivo
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Ativar link ativo na navegação
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-link');
+        
+        function activateNavItem() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        
+        // Adicione este código à sua função JavaScript existente
+        function initProfileSlider() {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            let currentSlide = 0;
+            
+            // Troca automática a cada 5 segundos
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            function showSlide(n) {
+                // Remove active de todos
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                // Ajusta índice se necessário
+                if (n >= slides.length) currentSlide = 0;
+                if (n < 0) currentSlide = slides.length - 1;
+                
+                // Adiciona active ao slide atual
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentSlide++;
+                if (currentSlide >= slides.length) currentSlide = 0;
+                showSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide--;
+                if (currentSlide < 0) currentSlide = slides.length - 1;
+                showSlide(currentSlide);
+            }
+            
+            // Event Listeners
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+            
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+            
+            // Indicadores clicáveis
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    resetInterval();
+                });
+            });
+            
+            // Reset do intervalo
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Pausa ao passar o mouse
+            const slider = document.querySelector('.profile-slider');
+            if (slider) {
+                slider.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                slider.addEventListener('mouseleave', () => {
+                    resetInterval();
+                });
+            }
+        }
+
+        // Chame a função no DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', initProfileSlider);
+            
+                
+
+        
+        // Animar barras de habilidade
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                const barPosition = bar.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (barPosition < screenPosition) {
+                    bar.style.width = width + '%';
+                }
+            });
+        }
+        
+        // Animar elementos ao rolar
+        const animatedElements = document.querySelectorAll(
+            '.section-title, .about-content, .skill-item, .skill-card, .contact-item, .resume-content, .resume-section'
+        );
+        
+        function animateOnScroll() {
+            animatedElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('visible');
+                }
+            });
+            
+            // Ativar título das seções
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                const titlePosition = title.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.5;
+                
+                if (titlePosition < screenPosition) {
+                    title.classList.add('visible');
+                }
+            });
+        }
+        
+        // Progresso da rolagem
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        function updateScrollProgress() {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        }
+        
+        // Botão voltar ao topo
+        const backToTop = document.getElementById('backToTop');
+        
+        function toggleBackToTop() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Esconder/mostrar header ao rolar
+        const header = document.getElementById('mainHeader');
+        let lastScroll = 0;
+        
+        function toggleHeader() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        }
+        
+        // Suavizar rolagem para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Adicionar event listeners
+        window.addEventListener('scroll', () => {
+            activateNavItem();
+            animateSkillBars();
+            animateOnScroll();
+            updateScrollProgress();
+            toggleBackToTop();
+            toggleHeader();
+        });
+        
+        // Inicializar animações na carga da página
+        document.addEventListener('DOMContentLoaded', () => {
+            activateNavItem();
+            animateSkillBars();
+            animateOnScroll();
+            updateScrollProgress();
+            toggleBackToTop();
+            
+            // Adicionar classes de animação após um breve delay
+            setTimeout(() => {
+                document.querySelector('.hero-text').style.animationPlayState = 'running';
+                document.querySelector('.hero-image').style.animationPlayState = 'running';
+            }, 300);
+        });
+        
+    </script>
+</body>
+</html>
